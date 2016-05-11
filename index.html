@@ -7,24 +7,31 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Rubik:900' rel='stylesheet' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="pomodoro.js"></script>
 	<link href="style.css" media="all" rel="stylesheet" type="text/css"/>
-
 </head>
 <body>
 	<div class="container" id="container_clock">
-		<div class="row">
-			<h2>Free Code Camp Pomodoro Clock</h2>
+		<div class="row" id="title">
+			<h2>
+				P<img src="https://raw.githubusercontent.com/laramartin/js_fcc_pomodoro_clock/master/src/pomodoro.PNG" id="pomodoro"/>
+				m<img src="https://raw.githubusercontent.com/laramartin/js_fcc_pomodoro_clock/master/src/pomodoro.PNG" id="pomodoro"/>
+				d<img src="https://raw.githubusercontent.com/laramartin/js_fcc_pomodoro_clock/master/src/pomodoro.PNG" id="pomodoro"/>
+				r<img src="https://raw.githubusercontent.com/laramartin/js_fcc_pomodoro_clock/master/src/pomodoro.PNG" id="pomodoro"/>
+				&nbsp;&nbsp;
+				Cl<img src="https://raw.githubusercontent.com/laramartin/js_fcc_pomodoro_clock/master/src/pomodoro.PNG" id="pomodoro"/>
+				ck</h2>
 		</div>
-		<div class="row" id="setTimer">
-				<div class="col-xs-6">break</div>
-				<div class="col-xs-6">work</div>
+		<div class="row" id="setTimerTitles">
+				<div class="col-xs-6">Break</div>
+				<div class="col-xs-6">Work</div>
 		</div>
-		<div class="row" id="setTimer">
+		<div class="row" id="setTimerButtons" >
 				<div class="col-xs-6">
-					<div class="row">
+						<div class="col-xs-3"></div>
 						<div class="col-xs-2">
 							<button class="buttons" value="minusBreak">-</button>
 						</div>
@@ -33,10 +40,10 @@
 						<div class="col-xs-2">
 							<button class="buttons" value="plusBreak">+</button>
 						</div>
-					</div>
+						<div class="col-xs-3"></div>
 				</div>
 				<div class="col-xs-6">
-					<div class="row">
+						<div class="col-xs-3"></div>
 						<div class="col-xs-2">
 							<button class="buttons" value="minusWork">-</button>
 						</div>
@@ -45,10 +52,11 @@
 						<div class="col-xs-2">
 							<button class="buttons" value="plusWork">+</button>
 						</div>
-					</div>
+						<div class="col-xs-3"></div>
 				</div>
 		</div>
 		<div class="row" id="counter">
+				<div class="col-xs-12" id="hint"></div>
 				<div class="col-xs-12">
 					<button class="buttonsTimer" value="counterButton">
 						<i class="fa fa-3x fa-hourglass" aria-hidden="true"></i>
@@ -56,16 +64,10 @@
 					</button>
 				</div>
 		</div>
-		<div class="row" id="progressBar">
-			<p>
-				progress bar --------------->
-			</p>
-		</div>
-
+		<footer class="footer container-fluid">
+			<p>Written and coded by <a href="http://www.freecodecamp.com/laramartin" target="_blank">Lara Martin
+			</a> in the &hearts; of Berlin.</p>
+		</footer>
 	</div>
-	<footer class="footer container-fluid">
-		<p>Written and coded by <a href="http://www.freecodecamp.com/laramartin" target="_blank">Lara Martin
-		</a> in the &hearts; of Berlin.</p>
-	</footer>
 </body>
 </html>

@@ -3,36 +3,77 @@ body{
   padding-top: 50px;
   color: white;
   text-align: center;
+  font-family: Tahoma;
+  font-weight: bold;
 }
 
 #container_clock{
-  width: 600px;
-  background-color: red;
+  width: 500px;
 }
 
-#setTimer{
-  font-size: 16px;
-  margin: 20px;
-  background-color: blue;
+#title{
+  font-family: 'Rubik', sans-serif;
+  font-size: 50px;
+  margin-bottom: 60px;
 }
 
+#pomodoro{
+  height: 20px;
+  width: 20px;
+  margin-left: 2px;
+  margin-right: -3px;
+}
+
+#setTimerTitles{
+  margin-bottom: 15px; auto;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+#setTimerButtons{
+  font-size: 20px;
+  text-align: center;
+}
+
+#timeBreak{
+  margin-left: 10px;
+  margin-right: -5px;
+}
+#timeWork{
+  margin-left: 10px;
+  margin-right: -5px;
+}
 #counter{
-  margin: 20px;
-  background-color: green;
-}
-
-#progressBar{
-  margin: 20px;
-  background-color: orange;
+  width: 300px;
+  margin: 20px auto;
+  border: solid;
+  border-color: red;
+  border-radius: 350px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .buttons{
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  background-color: inherit;
+  border: solid;
+  border-radius: 8px;
 }
 
 .buttonsTimer{
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: #303030;
+  border: none;
+}
+
+button:focus {outline:0;}
+
+#hint{
+  font-size: 30px;
+}
+
+#timer{
+  font-size: 60px;
 }
 
 footer {
