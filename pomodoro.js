@@ -1,11 +1,9 @@
-var timetoWork = 1; // minutes
-var timeToRest = 1; // minutes
-var workLeft = 60; //seconds
-var breakLeft = 60; //seconds
-var time = 5;
-//var interval = "";
+var timeWork = 1; // minutes
+var timeRest = 1; // minutes
+var time = 0;
 var work = true;
-var start = true;
+var started = false;
+
 
 $(document).ready(function() {
 
@@ -15,6 +13,7 @@ $(document).ready(function() {
     $(idStr).html(html);
   }
 
+  // actual timer, either for work or for rest
   function displayTimer(id, input){
     var sec = input % 60;
     var min = (input - sec) / 60;
@@ -26,77 +25,82 @@ $(document).ready(function() {
     $(idStr).html(html);
   }
 
-  function workOrBreak(status){
-    if (work){
-      time = workLeft;
-    } else {
-      time = breakLeft;
+  function displayHint(){
+  console.log("work: " + work);
+    var hintstr = "Break!";
+    if(work){
+      hintstr = "Work!";
     }
-    displayTimer("timer", time);
+    var html = "<p>" + hintstr + "</p>";
+    console.log("hintstr: " + hintstr);
+    $("#hint").html(html);
+  }
+
+  function display(){
+    displaySetTime("timeBreak", timeRest);
+    displaySetTime("timeWork", timeWork);
+    if (!started){
+      if(work){
+        displayTimer("timer", timeWork * 60);
+      } else {
+        displayTimer("timer", timeRest * 60);
+      }
+    } else {
+      displayTimer("timer", time);
+    }
+    displayHint();
+  }
+
+  function timer(){
+    if (time > 0){
+      time -= 1;
+      started = true;
+    } else {
+      started = false;
+      alert("IT'S TIME!!!!");
+      work = !work;
+      clearInterval(interval);
+    }
+    display();
   }
 
   $("button").click(function() {
+    var hasStopped = false;
+    if (started){
+      started = false;
+      hasStopped = true;
+      clearInterval(interval);
+    }
     var val = $(this).attr("value");
     if (val === "minusBreak"){
-      if (timeToRest > 0){
-        timeToRest -= 1;
-        breakLeft -= 60;
-        displaySetTime("timeBreak", timeToRest);
+      if (timeRest > 0){
+        timeRest -= 1;
       }
     } else if (val === "plusBreak"){
-      timeToRest += 1;
-      breakLeft += 60;
-      displaySetTime("timeBreak", timeToRest);
+      timeRest += 1;
     } else if (val === "minusWork"){
-      if (timetoWork > 0){
-        timetoWork -= 1;
-        workLeft -= 60;
-        time = workLeft
-        displaySetTime("timeWork", timetoWork);
-        displayTimer("timer", time);
+      if (timeWork > 0){
+        timeWork -= 1;
       }
     } else if (val === "plusWork"){
-      timetoWork += 1;
-      workLeft += 60;
-      time = workLeft
-      displaySetTime("timeWork", timetoWork);
-      displayTimer("timer", time);
-    } else if (val === "counterButton"){
-      if (start){
-        interval = setInterval(function(){
-          if (time > 0){
-            time -= 1;
-            displayTimer("timer", time);
-            start = false;
-            work = true;
-          } else {
-            start = true;
-            clearInterval(interval);
-            alert("BREAK TIME!!!!");
-            work = false;
-          }
-        }, 1000);
-      } else { // when timer is stopped
-        start = true;
-        clearInterval(interval);
+      timeWork += 1;
+    } else if (val === "counterButton" && !hasStopped){
+      if (!started){
+        if (work){
+          time = timeWork * 60;
+        } else {
+          time = timeRest * 60;
+        }
+        interval = setInterval(timer, 1000);
       }
     }
 
+
+
+    display();
+
   });
 
+  display();
 
-  displaySetTime("timeBreak", timeToRest);
-  displaySetTime("timeWork", timetoWork);
-  displayTimer("timer", time);
-
-
-
-  /*
-  while (workLeft !== 0){
-    setInterval(function() {
-      // method to be executed;
-      timetoWork -= 1;
-      displaySetTime("timeWork", timetoWork);
-    }, 1000);
-  }*/
 });
