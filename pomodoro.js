@@ -4,9 +4,9 @@ var time = 0;
 var work = true;
 var started = false;
 
-
 $(document).ready(function() {
 
+  // Show time chosen for break and for work
   function displaySetTime(id, input){
     var html = "<p>" + input + "</p>";
     var idStr = "#".concat(id);
@@ -25,14 +25,13 @@ $(document).ready(function() {
     $(idStr).html(html);
   }
 
+  // show if it's break or work time
   function displayHint(){
-  console.log("work: " + work);
     var hintstr = "Break!";
     if(work){
       hintstr = "Work!";
     }
     var html = "<p>" + hintstr + "</p>";
-    console.log("hintstr: " + hintstr);
     $("#hint").html(html);
   }
 
@@ -94,13 +93,7 @@ $(document).ready(function() {
         interval = setInterval(timer, 1000);
       }
     }
-
-
-
     display();
-
   });
-
   display();
-
 });
