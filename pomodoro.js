@@ -5,7 +5,7 @@ var work = true;      // if timer is for Work or Break
 var started = false;  // if counter has started
 
 $(document).ready(function() {
-  
+
   // Show time chosen for break and for work
   function displaySetTime(id, input){
     var html = "<p>" + input + "</p>";
@@ -112,3 +112,11 @@ $(document).ready(function() {
   // initial display
   display();
 });
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-77577364-1', 'auto');
+ga('send', 'pageview');
